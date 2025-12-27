@@ -20,12 +20,12 @@ const SkillsSection = () => {
         },
         {
             category: "Database",
-            items: ["SQL Server", "MongoDB"],
+            items: ["SQL Server", "MongoDB", "TablePlus"],
             color: "from-teal-400 to-emerald-500"
         },
         {
             category: "Tools",
-            items: ["Visual Studio", "VS Code", "Git", "Sublime Text"],
+            items: ["Visual Studio", "Cursor", "Git", "GitHub", "Postman", "Sublime Text"],
             color: "from-emerald-400 to-green-500"
         }
     ];

@@ -104,7 +104,7 @@ function App() {
       {/* Interactive animated background that follows mouse movement */}
       <AnimatedBackground mousePosition={mousePosition} particles={particles} />
 
-      {/* Fixed top navigation bar */}
+
       <Navigation
         activeSection={activeSection}
         scrollToSection={scrollToSection}

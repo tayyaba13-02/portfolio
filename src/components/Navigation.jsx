@@ -54,7 +54,7 @@ const Navigation = ({ activeSection, scrollToSection, scrolled }) => {
 
             {/* Mobile Dropdown Menu - Slide-out/Toggle effect */}
             {isMenuOpen && (
-                <div className="md:hidden glass border-t border-white/10">
+                <div className="md:hidden bg-slate-950/95 backdrop-blur-xl border-t border-white/10 shadow-2xl absolute w-full left-0">
                     <div className="px-4 py-4 space-y-2">
                         {menuItems.map((item) => (
                             <button
