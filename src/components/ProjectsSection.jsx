@@ -9,15 +9,20 @@ const ProjectsSection = () => {
     // Array of project objects defining the content for the display grid
     const projects = [
         {
-            title: "Hospital Management System",
-            description: "A comprehensive web application for managing hospital operations including patient records, staff management, and resource allocation.",
-            tech: ["Java Servlets", "HTML/CSS", "SQL"],
+            title: "SnapSecure AI",
+            description: "SnapSecure AI is a professional, privacy-focused web application designed to surgically detect and blur sensitive data in screenshots. Whether it's an email, a phone number, or a government ID, SnapSecure AI ensures your personal information stays private before you share it.",
+            tech: ["FastAPI", "React", "Tesseract OCR", "OpenCV"],
             features: [
-                "Add, view, update and delete Patients and Staff",
-                "Room and bed allocation system",
-                "Admin dashboard for user account management",
-                "Secure authentication and authorization"
+                "AI-Powered OCR: Fast and accurate text extraction from images.",
+                "Surgical Redaction: Precise Gaussian blurring that only hides what needs to be hidden.",
+                "Privacy First: Secure processing with no persistent data storage.",
+                "Professional Design: A modern, responsive interface built for speed and clarity."
             ],
+            architecture: "SnapSecure AI is split into two specialized components: Backend (FastAPI) for OCR and processing, and Frontend (React) for an intuitive UI.",
+            links: {
+                github: "https://github.com/tayyaba13-02/SnapSecure-AI",
+                demo: "https://huggingface.co/spaces/tayyabaaly/SnapSecureAI"
+            },
             gradient: "from-sky-500 to-cyan-500",
             icon: <Terminal className="w-8 h-8" />
         },
@@ -31,6 +36,10 @@ const ProjectsSection = () => {
                 "Multi-role dashboards (Customer, Tailor, Admin)",
                 "Commission tracking and payment integration"
             ],
+            links: {
+                github: "https://github.com/tayyaba13-02/TailorNow",
+                demo: "https://huggingface.co/spaces/tayyabaaly/TailorNow"
+            },
             gradient: "from-cyan-500 to-teal-500",
             icon: <Zap className="w-8 h-8" />
         }
@@ -44,6 +53,7 @@ const ProjectsSection = () => {
                     <h2 className="text-5xl sm:text-6xl font-bold mb-4 bg-gradient-to-r from-sky-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
                         Featured Projects
                     </h2>
+                    <p className="text-gray-400 text-lg mb-4">I have many projects but these are my best works.</p>
                     <div className="h-1 w-24 bg-gradient-to-r from-sky-500 via-cyan-500 to-teal-500 mx-auto rounded-full" />
                 </div>
 
@@ -94,7 +104,7 @@ const ProjectsSection = () => {
                                     <h4 className="text-lg font-semibold text-white mb-3">
                                         Tech Stack
                                     </h4>
-                                    <div className="flex flex-wrap gap-2">
+                                    <div className="flex flex-wrap gap-2 mb-8">
                                         {project.tech.map((tech, idx) => (
                                             <span
                                                 key={idx}
@@ -105,6 +115,34 @@ const ProjectsSection = () => {
                                         ))}
                                     </div>
                                 </div>
+
+                                {/* PROJECT LINKS */}
+                                {project.links && (
+                                    <div className="flex gap-4">
+                                        {project.links.github && (
+                                            <a
+                                                href={project.links.github}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex-1 glass glass-hover py-3 rounded-xl flex items-center justify-center gap-2 text-white font-medium transition-all hover:scale-105"
+                                            >
+                                                <Terminal size={18} />
+                                                Code
+                                            </a>
+                                        )}
+                                        {project.links.demo && (
+                                            <a
+                                                href={project.links.demo}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex-1 bg-gradient-to-r from-sky-500 to-cyan-500 py-3 rounded-xl flex items-center justify-center gap-2 text-white font-bold transition-all hover:scale-105 hover:shadow-lg hover:shadow-sky-500/25"
+                                            >
+                                                <Zap size={18} />
+                                                Live Demo
+                                            </a>
+                                        )}
+                                    </div>
+                                )}
                             </div>
                         </div>
                     ))}

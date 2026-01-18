@@ -13,7 +13,7 @@ const EducationSection = () => {
             institution: "Punjab University (PUCIT)",
             duration: "2022 - Present",
             grade: "CGPA: 3.45 / 4.0",
-            status: "7th Semester",
+            status: "8th Semester",
             icon: <GraduationCap size={28} />,
             gradient: "from-sky-500 to-cyan-500",
             borderColor: "border-sky-500/30",
