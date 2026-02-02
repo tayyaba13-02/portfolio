@@ -8,14 +8,13 @@ import { Briefcase, Zap } from 'lucide-react';
 const ExperienceSection = () => {
     const experiences = [
         {
-            role: "Web Developer Intern",
+            role: "Full Stack Developer",
             company: "ARCH TECHNOLOGIES",
             duration: "Dec 2025 - Jan 2026",
             description: [
                 "Architected and implemented responsive user interfaces using modern frameworks, ensuring seamless performance across all device types.",
-                "Collaborated with cross-functional teams to integrate RESTful APIs and optimize backend database queries for faster data retrieval.",
-                "Utilized industry-standard version control and Agile methodologies to maintain codebase integrity and consistently meet project deadlines.",
-                "Debugged and resolved critical issues in existing codebases, significantly improving overall system stability and user satisfaction."
+
+                "Applied comprehensive full-stack technical skills to solve complex real-world problems and deliver high-quality software solutions."
             ],
             icon: <Briefcase size={28} />,
             gradient: "from-emerald-500 to-green-600",
