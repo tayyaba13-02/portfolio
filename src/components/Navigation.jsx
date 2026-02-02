@@ -10,7 +10,7 @@ const Navigation = ({ activeSection, scrollToSection, scrolled }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     // List of navigation links corresponding to section IDs
-    const menuItems = ['Home', 'About', 'Education', 'Projects', 'Skills', 'Contact'];
+    const menuItems = ['Home', 'About', 'Education', 'Experience', 'Projects', 'Skills', 'Contact'];
 
     return (
         <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled

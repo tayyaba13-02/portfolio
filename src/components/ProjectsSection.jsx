@@ -1,5 +1,5 @@
 import React from 'react';
-import { Terminal, Zap } from 'lucide-react';
+import { Terminal, Zap, Music } from 'lucide-react';
 
 /**
  * ProjectsSection Component
@@ -8,6 +8,24 @@ import { Terminal, Zap } from 'lucide-react';
 const ProjectsSection = () => {
     // Array of project objects defining the content for the display grid
     const projects = [
+        {
+            title: "Nexus Music",
+            description: "Nexus is a premium, high-performance music streaming application with a sleek Emerald Design System. Built with FastAPI and React, it offers a fast, modern, and cloud-native experience for managing your personal music collection without the need for traditional accounts.",
+            tech: ["FastAPI", "React", "MongoDB", "Framer Motion", "Tailwind CSS", "Zustand"],
+            features: [
+                "Emerald UI/UX: A stunning, high-contrast dark theme with glassmorphism and smooth animations.",
+                "Anonymous Identity: Privacy-first design using a unique Identity Key stored in your browser.",
+                "Mood Tagging: Organize and filter your music by vibe with 8 core moods.",
+                "YouTube Import: Search and import songs directly with full metadata extraction.",
+                "PWA Native Experience: Install on Desktop or Mobile with offline-ready service workers."
+            ],
+            links: {
+                github: "https://github.com/tayyaba13-02/Nexus",
+                demo: "https://tayyabaaly-nexus.hf.space/"
+            },
+            gradient: "from-emerald-500 to-green-600",
+            icon: <Music className="w-8 h-8" />
+        },
         {
             title: "SnapSecure AI",
             description: "SnapSecure AI is a professional, privacy-focused web application designed to surgically detect and blur sensitive data in screenshots. Whether it's an email, a phone number, or a government ID, SnapSecure AI ensures your personal information stays private before you share it.",

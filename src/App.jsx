@@ -6,6 +6,7 @@ import EducationSection from './components/EducationSection';
 import ProjectsSection from './components/ProjectsSection';
 import SkillsSection from './components/SkillsSection';
 import ContactSection from './components/ContactSection';
+import ExperienceSection from './components/ExperienceSection';
 import AnimatedBackground from './components/AnimatedBackground';
 
 /**
@@ -42,7 +43,7 @@ function App() {
       setScrolled(window.scrollY > 50);
 
       // List of section IDs to monitor for viewport visibility
-      const sections = ['home', 'about', 'education', 'projects', 'skills', 'contact'];
+      const sections = ['home', 'about', 'education', 'experience', 'projects', 'skills', 'contact'];
       const scrollPosition = window.scrollY + 100; // Offset for better triggering
 
       for (const section of sections) {
@@ -135,6 +136,16 @@ function App() {
 
         {/* ACADEMIC HISTORY SECTION */}
         <EducationSection />
+
+        <div className="max-w-4xl mx-auto px-4 py-8 text-center">
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent mb-8" />
+          <p className="text-gray-400 font-medium tracking-widest uppercase text-base">
+            Professional Experience & Growth
+          </p>
+        </div>
+
+        {/* PROFESSIONAL EXPERIENCE SECTION */}
+        <ExperienceSection />
 
         <div className="max-w-4xl mx-auto px-4 py-8 text-center">
           <div className="h-px w-full bg-gradient-to-r from-transparent via-sky-500/50 to-transparent mb-8" />
