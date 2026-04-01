@@ -21,7 +21,7 @@ const HeroSection = ({ scrollToSection }) => {
                 className="absolute -top-32 -left-32 sm:-top-40 sm:-left-40 w-96 sm:w-125 h-96 sm:h-125 bg-sky-500/20 blur-[100px] rounded-full z-0"
             />
 
-            <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10 w-full">
+            <div className="max-w-6xl mx-auto px-10 sm:px-16 lg:px-24 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10 w-full">
                 {/* LEFT CONTENT */}
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
@@ -43,7 +43,7 @@ const HeroSection = ({ scrollToSection }) => {
                     </div>
 
                     {/* Name */}
-                    <h1 className="text-sky-50 text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-bold leading-tight mb-6 font-poppins">
+                    <h1 className="text-sky-50 text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold leading-tight mb-6 font-poppins">
                         Tayyaba
                         <span className="block text-sky-500/40">Anwar</span>
                     </h1>
