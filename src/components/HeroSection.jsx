@@ -113,12 +113,12 @@ const HeroSection = ({ scrollToSection }) => {
 
                     <div className="relative group">
                         {/* Image Frame */}
-                        <div className="absolute -inset-1 bg-gradient-to-r from-sky-500/40 to-teal-500/40 rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                        <div className="absolute -inset-1 bg-gradient-to-r from-sky-500/40 to-teal-500/40 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
                         
                         <img
                             src={profileImg}
                             alt="Tayyaba Anwar"
-                            className="relative w-64 sm:w-80 md:w-96 h-80 sm:h-[28rem] md:h-[32rem] object-cover rounded-[2rem] shadow-2xl transition-all duration-700 bg-zinc-900 border border-white/5"
+                            className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 object-cover rounded-full shadow-2xl transition-all duration-700 bg-zinc-900 border border-white/5"
                         />
                     </div>
                 </motion.div>
