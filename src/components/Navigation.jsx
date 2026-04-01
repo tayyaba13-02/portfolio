@@ -1,79 +1,117 @@
-import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, FileText } from 'lucide-react';
 
 /**
  * Navigation Component
- * Provides a sticky header with smooth-scrolling links and a mobile-responsive menu.
+ * Premium minimalist navbar with pink accents and smooth transitions.
  */
 const Navigation = ({ activeSection, scrollToSection, scrolled }) => {
-    // State to toggle the mobile menu visibility
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
-    // List of navigation links corresponding to section IDs
-    const menuItems = ['Home', 'About', 'Education', 'Experience', 'Projects', 'Skills', 'Contact'];
+    // List of navigation links
+    const menuItems = [
+        { label: 'Home', id: 'home' },
+        { label: 'Journey', id: 'experience' },
+        { label: 'Education', id: 'education' },
+        { label: 'Projects', id: 'projects' },
+        { label: 'Contact', id: 'contact' }
+    ];
 
     return (
-        <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled
-            ? 'bg-slate-950/95 backdrop-blur-xl shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] h-16'
-            : 'bg-transparent h-20'
-            }`}>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Main Navbar Container - Adjusts height based on scroll state */}
-                <div className={`flex justify-between items-center transition-all duration-500 ${scrolled ? 'h-16' : 'h-20'}`}>
-                    {/* Brand Logo / Name */}
-                    <div className="text-2xl font-bold bg-gradient-to-r from-sky-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
-                        Tayyaba Anwar
+        <nav
+            className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b ${scrolled 
+                ? 'bg-black/90 backdrop-blur-md border-white/5 py-3' 
+                : 'bg-transparent border-transparent py-5'}`}
+        >
+            <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 flex justify-between items-center">
+                
+                {/* Logo Area */}
+                <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="flex items-center gap-3 cursor-pointer group"
+                    onClick={() => scrollToSection('home')}
+                >
+                    <div className="w-10 h-10 rounded-xl bg-sky-500/20 flex items-center justify-center font-bold text-white border border-sky-500/30 group-hover:bg-sky-500/40 transition-all duration-300">
+                        T
                     </div>
+                    <span className="text-white font-bold text-xl tracking-tight font-poppins">
+                        Tayyaba<span className="text-sky-500/60 ml-1">Anwar</span>
+                    </span>
+                </motion.div>
 
-                    {/* Desktop Menu - Hidden on small screens */}
-                    <div className="hidden md:flex space-x-1">
-                        {menuItems.map((item) => (
-                            <button
-                                key={item}
-                                onClick={() => scrollToSection(item.toLowerCase())}
-                                className={`px-4 py-2 rounded-lg transition-all duration-300 ${activeSection === item.toLowerCase()
-                                    ? 'bg-gradient-to-r from-sky-500 to-cyan-500 text-white shadow-lg shadow-sky-500/50'
-                                    : 'text-gray-300 hover:text-white hover:bg-white/10'
-                                    }`}
-                            >
-                                {item}
-                            </button>
-                        ))}
-                    </div>
-
-                    {/* Mobile Menu Button - Visible only on small screens */}
-                    <button
-                        className="md:hidden glass rounded-lg p-2 hover:bg-white/10 transition-all"
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        aria-label="Toggle menu"
+                {/* Desktop Links */}
+                <div className="hidden md:flex items-center gap-8">
+                    {menuItems.map((item) => (
+                        <button
+                            key={item.id}
+                            onClick={() => scrollToSection(item.id)}
+                            className={`text-sm font-medium transition-all duration-300 hover:text-sky-500/60 font-poppins ${
+                                activeSection === item.id ? 'text-sky-500' : 'text-gray-400'
+                            }`}
+                        >
+                            {item.label}
+                        </button>
+                    ))}
+                    <motion.a
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        href="/assets/resume.pdf"
+                        target="_blank"
+                        className="px-5 py-2 rounded-xl bg-sky-500/20 text-sky-500 text-sm font-semibold border border-sky-500/30 hover:bg-sky-500/30 transition-all flex items-center gap-2"
                     >
-                        {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                        <FileText size={16} />
+                        Resume
+                    </motion.a>
+                </div>
+
+                {/* Mobile Toggle */}
+                <div className="md:hidden">
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="p-2 text-gray-400 hover:text-sky-500 transition-colors"
+                    >
+                        {isOpen ? <X size={28} /> : <Menu size={28} />}
                     </button>
                 </div>
             </div>
 
-            {/* Mobile Dropdown Menu - Slide-out/Toggle effect */}
-            {isMenuOpen && (
-                <div className="md:hidden bg-slate-950/95 backdrop-blur-xl border-t border-white/10 shadow-2xl absolute w-full left-0">
-                    <div className="px-4 py-4 space-y-2">
-                        {menuItems.map((item) => (
-                            <button
-                                key={item}
-                                onClick={() => {
-                                    scrollToSection(item.toLowerCase());
-                                    setIsMenuOpen(false); // Close menu after selection
-                                }}
-                                className={`block w-full text-left px-4 py-3 rounded-lg transition-all ${activeSection === item.toLowerCase()
-                                    ? 'bg-gradient-to-r from-sky-500 to-cyan-500 text-white'
-                                    : 'text-gray-300 hover:bg-white/10 hover:text-white'
+            {/* Mobile Menu */}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="md:hidden bg-black/95 border-b border-white/5 overflow-hidden"
+                    >
+                        <div className="flex flex-col gap-6 px-10 py-10">
+                            {menuItems.map((item) => (
+                                <button
+                                    key={item.id}
+                                    onClick={() => {
+                                        scrollToSection(item.id);
+                                        setIsOpen(false);
+                                    }}
+                                    className={`text-lg font-medium text-left transition-colors font-poppins ${
+                                        activeSection === item.id ? 'text-sky-500' : 'text-gray-400'
                                     }`}
+                                >
+                                    {item.label}
+                                </button>
+                            ))}
+                            <a
+                                href="/assets/resume.pdf"
+                                className="text-lg font-medium text-sky-500 font-poppins flex items-center gap-2"
                             >
-                                {item}
-                            </button>
-                        ))}
-                    </div>
-                </div>
-            )}
+                                <FileText size={20} />
+                                Resume
+                            </a>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </nav>
     );
 };

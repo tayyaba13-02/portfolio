@@ -1,99 +1,127 @@
 import React from 'react';
-import { Mail, Code, Briefcase, ChevronDown, Github, Linkedin } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Mail, Github, Linkedin, Briefcase, FileText } from 'lucide-react';
 import profileImg from '../assets/profile.jpeg';
 
 /**
  * HeroSection Component
- * The landing section of the portfolio, featuring a profile image, name, title, and major CTAs.
+ * A premium 2-column hero section with pink accents and framer-motion animations.
  */
 const HeroSection = ({ scrollToSection }) => {
     return (
-        <section id="home" className="min-h-screen flex items-center justify-center px-4 pt-20 relative">
-            <div className="max-w-6xl mx-auto text-center relative z-10">
-                {/* PROFILE PICTURE DISPLAY */}
-                <div className="mb-8 inline-block relative">
-                    <div className="w-40 h-40 rounded-full glass flex items-center justify-center shadow-2xl shadow-sky-500/50 relative overflow-hidden group">
+        <section
+            id="home"
+            className="min-h-screen bg-black flex items-center pt-20 sm:pt-24 relative overflow-hidden"
+        >
+            {/* Background Glow - Top Left */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 2 }}
+                className="absolute -top-32 -left-32 sm:-top-40 sm:-left-40 w-96 sm:w-125 h-96 sm:h-125 bg-sky-500/20 blur-[100px] rounded-full z-0"
+            />
+
+            <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10 w-full">
+                {/* LEFT CONTENT */}
+                <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="text-center lg:text-left"
+                >
+                    {/* Accent Line + Role */}
+                    <div className="flex items-center justify-center lg:justify-start gap-4 mb-6">
+                        <motion.span
+                            initial={{ width: 0 }}
+                            animate={{ width: 40 }}
+                            transition={{ delay: 0.5, duration: 0.8 }}
+                            className="h-0.5 bg-sky-400/80"
+                        />
+                        <p className="text-sky-400/80 tracking-[0.2em] text-xs sm:text-sm font-medium uppercase font-poppins">
+                            Full Stack Developer
+                        </p>
+                    </div>
+
+                    {/* Name */}
+                    <h1 className="text-sky-50 text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-bold leading-tight mb-6 font-poppins">
+                        Tayyaba
+                        <span className="block text-sky-500/40">Anwar</span>
+                    </h1>
+
+                    {/* Description */}
+                    <p className="text-gray-400 max-w-xl mx-auto lg:mx-0 text-base sm:text-lg leading-relaxed mb-10 font-poppins">
+                        Dedicated to crafting sophisticated digital ecosystems that prioritize <span className="text-sky-400/80 font-semibold underline decoration-sky-500/20 underline-offset-4">technical precision</span> and user-centric design. With <span className="text-sky-400/80 font-semibold">1.5 years</span> of hands-on development, I transform complex ideas into seamless, high-performance web applications.
+                    </p>
+
+                    {/* CTA Buttons */}
+                    <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 sm:gap-5">
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => scrollToSection('projects')}
+                            className="px-8 py-4 bg-sky-500/40 cursor-pointer hover:bg-sky-500/50 text-white rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-sky-500/20 font-semibold border border-sky-500/30"
+                        >
+                            <Briefcase size={20} />
+                            View Projects
+                        </motion.button>
+
+                        <motion.a
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            href="mailto:tayyabaanwar43@gmail.com"
+                            className="px-8 py-4 border border-sky-500/40 text-sky-500/60 hover:bg-sky-500/10 rounded-xl transition-all text-center font-semibold flex items-center justify-center gap-2"
+                        >
+                            <Mail size={20} />
+                            Contact Me
+                        </motion.a>
+                    </div>
+
+                    {/* Social Links */}
+                    <div className="mt-10 flex justify-center lg:justify-start gap-6">
+                        <motion.a
+                            whileHover={{ y: -5, color: '#0ea5e9' }}
+                            href="https://github.com/tayyaba13-02"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-500 transition-colors"
+                        >
+                            <Github size={24} />
+                        </motion.a>
+                        <motion.a
+                            whileHover={{ y: -5, color: '#0ea5e9' }}
+                            href="https://www.linkedin.com/in/tayyaba-anwar-aly"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-500 transition-colors"
+                        >
+                            <Linkedin size={24} />
+                        </motion.a>
+                    </div>
+                </motion.div>
+
+                {/* RIGHT IMAGE */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
+                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                    transition={{ duration: 1, ease: "easeOut" }}
+                    className="flex justify-center lg:justify-end relative"
+                >
+                    {/* Background Decorative Circles */}
+                    <div className="absolute inset-0 flex items-center justify-center -z-10">
+                        <div className="w-64 h-64 sm:w-80 sm:h-80 bg-sky-500/10 rounded-full blur-3xl animate-pulse" />
+                    </div>
+
+                    <div className="relative group">
+                        {/* Image Frame */}
+                        <div className="absolute -inset-1 bg-gradient-to-r from-sky-500/40 to-teal-500/40 rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                        
                         <img
                             src={profileImg}
                             alt="Tayyaba Anwar"
-                            className="w-full h-full object-cover relative z-10 transition-transform duration-500 group-hover:scale-110"
+                            className="relative w-64 sm:w-80 md:w-96 h-80 sm:h-[28rem] md:h-[32rem] object-cover rounded-[2rem] shadow-2xl transition-all duration-700 bg-zinc-900 border border-white/5"
                         />
                     </div>
-                </div>
-
-                {/* MAIN HEADING - Name with gradient text */}
-                <h1 className="text-6xl sm:text-8xl font-bold mb-6 animate-in">
-                    <span className="bg-gradient-to-r from-sky-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
-                        Tayyaba Anwar
-                    </span>
-                </h1>
-
-                {/* SUBHEADING - Professional Title */}
-                <div className="flex items-center justify-center gap-3 mb-8 animate-in" style={{ animationDelay: '0.2s' }}>
-                    <Code className="text-sky-400" size={28} />
-                    <p className="text-3xl sm:text-4xl text-gray-300">Software Developer</p>
-                </div>
-
-                {/* SUMMARY STATEMENT */}
-                <p className="text-xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed animate-in" style={{ animationDelay: '0.4s' }}>
-                    BSIT Student | Full Stack Developer | Building innovative solutions with modern technologies
-                </p>
-
-                {/* CALL TO ACTION BUTTONS */}
-                <div className="flex flex-wrap justify-center gap-4 mb-8 animate-in" style={{ animationDelay: '0.6s' }}>
-                    {/* Primary CTA: Email contact */}
-                    <a
-                        href="mailto:tayyabaanwar43@gmail.com"
-                        className="group relative px-8 py-4 rounded-xl overflow-hidden transition-all duration-300 hover:scale-105"
-                    >
-                        <div className="absolute inset-0 bg-gradient-to-r from-sky-500 to-cyan-500" />
-                        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-                        <span className="relative flex items-center gap-2 font-semibold">
-                            <Mail size={20} />
-                            Get In Touch
-                        </span>
-                    </a>
-
-                    {/* Secondary CTA: Scroll to projects showcase */}
-                    <button
-                        onClick={() => scrollToSection('projects')}
-                        className="glass glass-hover px-8 py-4 rounded-xl font-semibold flex items-center gap-2 transition-all duration-300 hover:scale-105"
-                    >
-                        <Briefcase size={20} />
-                        View Projects
-                    </button>
-                </div>
-
-                {/* QUICK SOCIAL LINKS */}
-                <div className="flex justify-center gap-4 mb-12 animate-in" style={{ animationDelay: '0.8s' }}>
-                    <a
-                        href="https://github.com/tayyaba13-02"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="glass glass-hover p-3 rounded-full text-gray-400 hover:text-white transition-all hover:scale-110 shadow-lg"
-                        title="GitHub"
-                    >
-                        <Github size={24} />
-                    </a>
-                    <a
-                        href="https://www.linkedin.com/in/tayyaba-anwar-aly"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="glass glass-hover p-3 rounded-full text-gray-400 hover:text-sky-400 transition-all hover:scale-110 shadow-lg"
-                        title="LinkedIn"
-                    >
-                        <Linkedin size={24} />
-                    </a>
-                </div>
-
-                {/* SCROLL INDICATOR - Encourages downward navigation */}
-                <button
-                    onClick={() => scrollToSection('about')}
-                    className="animate-bounce inline-block"
-                    aria-label="Scroll to about section"
-                >
-                    <ChevronDown size={40} className="text-cyan-400" />
-                </button>
+                </motion.div>
             </div>
         </section>
     );

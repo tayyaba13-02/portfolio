@@ -1,171 +1,186 @@
 import React from 'react';
-import { Terminal, Zap, Music } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Github, ExternalLink, Sparkles, Music, Terminal, Zap } from 'lucide-react';
+
+/**
+ * ProjectCard Component
+ * Individual project showcase with full description, features, and tech stack.
+ */
+const ProjectCard = ({ project, index }) => (
+    <motion.section
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: index * 0.1 }}
+        viewport={{ once: true }}
+        className="max-w-5xl mx-auto px-4 py-16 border-b border-zinc-800 last:border-0 group"
+    >
+        {/* Title */}
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 group-hover:text-sky-500/80 transition-colors font-poppins">
+            {project.title}
+        </h2>
+
+        {/* Short Description */}
+        <p className="text-gray-400 mb-8 text-lg leading-relaxed font-poppins">
+            {project.description}
+        </p>
+
+        {/* Tech Stack */}
+        <div className="flex flex-wrap gap-3 mb-10">
+            {project.tech.map((tech, idx) => (
+                <span
+                    key={idx}
+                    className="px-4 py-2 rounded-lg bg-zinc-900 border border-white/5 text-sm text-gray-300 font-medium"
+                >
+                    {tech}
+                </span>
+            ))}
+        </div>
+
+        {/* Features */}
+        <div className="mb-10">
+            <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                <Sparkles size={18} className="text-sky-500/60" />
+                Key Features
+            </h3>
+            <ul className="grid md:grid-cols-2 gap-4 text-gray-400">
+                {project.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start gap-3 text-sm">
+                        <div className="w-1.5 h-1.5 rounded-full bg-sky-500/40 mt-1.5 shrink-0" />
+                        {feature}
+                    </li>
+                ))}
+            </ul>
+        </div>
+
+        {/* Actions */}
+        <div className="flex flex-wrap gap-4">
+            {project.links?.github && (
+                <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    href={project.links.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-3 rounded-xl text-white bg-sky-500/30 hover:bg-sky-500/40 border border-sky-500/20 transition flex items-center gap-2 font-medium"
+                >
+                    <Github size={18} />
+                    View Source
+                </motion.a>
+            )}
+            {project.links?.demo && (
+                <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    href={project.links.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-3 rounded-xl text-white bg-zinc-800 hover:bg-zinc-700 transition flex items-center gap-2 font-medium"
+                >
+                    <ExternalLink size={18} />
+                    Live Demo
+                </motion.a>
+            )}
+        </div>
+    </motion.section>
+);
 
 /**
  * ProjectsSection Component
- * Showcases key projects with descriptions, features, and technical stacks.
+ * Displays a curated selection of projects with a premium minimal aesthetic.
  */
 const ProjectsSection = () => {
-    // Array of project objects defining the content for the display grid
     const projects = [
         {
+            title: "EduVerse AI (Capstone FYP)",
+            description: "An AI-powered multi-tenant e-learning platform allowing independent institutional operations with personalized adaptive learning assistants.",
+            tech: ["Angular", "FastAPI", "MongoDB", "LangChain", "LLMs", "AWS"],
+            features: [
+                "Multi-Tenancy: Secure data isolation for multiple institutions.",
+                "AI Learning Assistant: Smart content summarization and Q&A.",
+                "Course Management: Comprehensive tools for material organization.",
+                "Scalable Architecture: Cloud-native design hosted on AWS."
+            ],
+            links: {
+                github: "https://github.com/Muhammad-Hassan-522/EduVerse-AI-backend.git",
+                demo: ""
+            }
+        },
+        {
             title: "Nexus Music",
-            description: "Nexus is a premium, high-performance music streaming application with a sleek Emerald Design System. Built with FastAPI and React, it offers a fast, modern, and cloud-native experience for managing your personal music collection without the need for traditional accounts.",
+            description: "A premium music streaming application with a sleek Emerald Design System and privacy-first anonymous identity.",
             tech: ["FastAPI", "React", "MongoDB", "Framer Motion", "Tailwind CSS", "Zustand"],
             features: [
-                "Emerald UI/UX: A stunning, high-contrast dark theme with glassmorphism and smooth animations.",
-                "Anonymous Identity: Privacy-first design using a unique Identity Key stored in your browser.",
-                "Mood Tagging: Organize and filter your music by vibe with 8 core moods.",
-                "YouTube Import: Search and import songs directly with full metadata extraction.",
-                "PWA Native Experience: Install on Desktop or Mobile with offline-ready service workers."
+                "Emerald UI/UX: High-contrast dark theme with glassmorphism.",
+                "Anonymous Identity: Privacy-first browser-based Identity Key.",
+                "YouTube Import: Search and import songs with full metadata.",
+                "PWA Experience: Installable on Desktop/Mobile with offline support."
             ],
             links: {
                 github: "https://github.com/tayyaba13-02/Nexus",
                 demo: "https://tayyabaaly-nexus.hf.space/"
-            },
-            gradient: "from-emerald-500 to-green-600",
-            icon: <Music className="w-8 h-8" />
+            }
         },
         {
             title: "SnapSecure AI",
-            description: "SnapSecure AI is a professional, privacy-focused web application designed to surgically detect and blur sensitive data in screenshots. Whether it's an email, a phone number, or a government ID, SnapSecure AI ensures your personal information stays private before you share it.",
+            description: "A professional privacy-focused web application designed to surgically detect and blur sensitive data in screenshots.",
             tech: ["FastAPI", "React", "Tesseract OCR", "OpenCV"],
             features: [
-                "AI-Powered OCR: Fast and accurate text extraction from images.",
-                "Surgical Redaction: Precise Gaussian blurring that only hides what needs to be hidden.",
-                "Privacy First: Secure processing with no persistent data storage.",
-                "Professional Design: A modern, responsive interface built for speed and clarity."
+                "AI-Powered OCR: Fast and accurate text extraction.",
+                "Surgical Redaction: Precise Gaussian blurring for sensitive fields.",
+                "Privacy First: Secure local processing with no storage.",
+                "Modern UI: Responsive interface built for professional speed."
             ],
-            architecture: "SnapSecure AI is split into two specialized components: Backend (FastAPI) for OCR and processing, and Frontend (React) for an intuitive UI.",
             links: {
                 github: "https://github.com/tayyaba13-02/SnapSecure-AI",
                 demo: "https://huggingface.co/spaces/tayyabaaly/SnapSecureAI"
-            },
-            gradient: "from-sky-500 to-cyan-500",
-            icon: <Terminal className="w-8 h-8" />
+            }
         },
         {
-            title: "TailorNow – Tailoring Services Platform",
-            description: "An innovative web platform connecting customers with tailors for both urgent and regular tailoring services.",
+            title: "TailorNow",
+            description: "An innovative digital marketplace connecting customers with professional tailors for urgent and scheduled services.",
             tech: ["ASP.NET MVC", "C#", "SQL Server", "JavaScript"],
             features: [
-                "User registration and authentication",
-                "Real-time tailor booking system",
-                "Multi-role dashboards (Customer, Tailor, Admin)",
-                "Commission tracking and payment integration"
+                "Tailor Booking: Real-time system for booking and scheduling.",
+                "Multi-role Dashboards: Portals for Customers, Tailors, and Admins.",
+                "Payment Integration: Secure handling of service transactions.",
+                "Auth System: Robust user registration and authentication."
             ],
             links: {
                 github: "https://github.com/tayyaba13-02/TailorNow",
                 demo: "https://huggingface.co/spaces/tayyabaaly/TailorNow"
-            },
-            gradient: "from-cyan-500 to-teal-500",
-            icon: <Zap className="w-8 h-8" />
+            }
         }
     ];
 
     return (
-        <section id="projects" className="py-20 px-4 relative">
-            <div className="max-w-6xl mx-auto relative z-10">
+        <section id="projects" className="bg-black py-24 px-6 relative overflow-hidden">
+            <div className="max-w-7xl mx-auto relative z-10">
                 {/* SECTION HEADER */}
-                <div className="text-center mb-16">
-                    <h2 className="text-5xl sm:text-6xl font-bold mb-4 bg-gradient-to-r from-sky-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
-                        Featured Projects
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                    className="mb-20 text-center"
+                >
+                    <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 font-poppins">
+                        My <span className="text-sky-500/40">Creations</span>
                     </h2>
-                    <p className="text-gray-400 text-lg mb-4">I have many projects but these are my best works.</p>
-                    <div className="h-1 w-24 bg-gradient-to-r from-sky-500 via-cyan-500 to-teal-500 mx-auto rounded-full" />
-                </div>
+                    <p className="text-gray-400 max-w-2xl mx-auto text-lg font-poppins italic">
+                        A curated selection of projects demonstrating my ability to design, build, and deliver scalable, user-focused software solutions.
+                    </p>
+                </motion.div>
 
-                {/* PROJECT DISPLAY GRID */}
-                <div className="grid md:grid-cols-2 gap-8">
+                {/* PROJECTS LIST */}
+                <div className="space-y-4">
                     {projects.map((project, index) => (
-                        <div
-                            key={index}
-                            className="glass rounded-2xl overflow-hidden group hover:scale-105 transition-all duration-300"
-                        >
-                            {/* PROJECT HEADER COLOR BAR - Dynamic gradient based on project data */}
-                            <div className={`p-6 bg-gradient-to-r ${project.gradient} relative overflow-hidden`}>
-                                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity" />
-                                <div className="relative flex items-center gap-4">
-                                    {/* Icon Container with backdrop blur */}
-                                    <div className="w-16 h-16 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                                        {project.icon}
-                                    </div>
-                                    <h3 className="text-2xl font-bold text-white">{project.title}</h3>
-                                </div>
-                            </div>
-
-                            {/* PROJECT BODY CONTENT */}
-                            <div className="p-6">
-                                {/* Short project pitch/description */}
-                                <p className="text-gray-300 mb-6 leading-relaxed">
-                                    {project.description}
-                                </p>
-
-                                {/* FEATURE HIGHLIGHTS */}
-                                <div className="mb-6">
-                                    <h4 className="text-lg font-semibold text-white mb-3">
-                                        Key Features
-                                    </h4>
-                                    <div className="space-y-2">
-                                        {project.features.map((feature, idx) => (
-                                            <div key={idx} className="flex items-start gap-2 text-sm text-gray-400">
-                                                {/* Skill bullet with gradient branding */}
-                                                <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-sky-500 to-cyan-500 mt-2 flex-shrink-0" />
-                                                <span>{feature}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                {/* FULL TECH STACK TAGS */}
-                                <div>
-                                    <h4 className="text-lg font-semibold text-white mb-3">
-                                        Tech Stack
-                                    </h4>
-                                    <div className="flex flex-wrap gap-2 mb-8">
-                                        {project.tech.map((tech, idx) => (
-                                            <span
-                                                key={idx}
-                                                className="glass px-4 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:border-white/20 transition-all font-medium"
-                                            >
-                                                {tech}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                {/* PROJECT LINKS */}
-                                {project.links && (
-                                    <div className="flex gap-4">
-                                        {project.links.github && (
-                                            <a
-                                                href={project.links.github}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="flex-1 glass glass-hover py-3 rounded-xl flex items-center justify-center gap-2 text-white font-medium transition-all hover:scale-105"
-                                            >
-                                                <Terminal size={18} />
-                                                Code
-                                            </a>
-                                        )}
-                                        {project.links.demo && (
-                                            <a
-                                                href={project.links.demo}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="flex-1 bg-gradient-to-r from-sky-500 to-cyan-500 py-3 rounded-xl flex items-center justify-center gap-2 text-white font-bold transition-all hover:scale-105 hover:shadow-lg hover:shadow-sky-500/25"
-                                            >
-                                                <Zap size={18} />
-                                                Live Demo
-                                            </a>
-                                        )}
-                                    </div>
-                                )}
-                            </div>
-                        </div>
+                        <ProjectCard key={index} project={project} index={index} />
                     ))}
                 </div>
             </div>
+
+            {/* Background Decorative Element */}
+            <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-sky-500/5 to-transparent pointer-events-none" />
         </section>
     );
 };
