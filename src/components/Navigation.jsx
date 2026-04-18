@@ -20,14 +20,14 @@ const Navigation = ({ activeSection, scrollToSection, scrolled }) => {
 
     return (
         <nav
-            className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b ${scrolled 
-                ? 'bg-black/90 backdrop-blur-md border-white/5 py-3' 
+            className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b ${scrolled
+                ? 'bg-black/90 backdrop-blur-md border-white/5 py-3'
                 : 'bg-transparent border-transparent py-5'}`}
         >
             <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 flex justify-between items-center">
-                
+
                 {/* Logo Area */}
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     className="flex items-center gap-3 cursor-pointer group"
@@ -47,9 +47,8 @@ const Navigation = ({ activeSection, scrollToSection, scrolled }) => {
                         <button
                             key={item.id}
                             onClick={() => scrollToSection(item.id)}
-                            className={`text-sm font-medium transition-all duration-300 hover:text-sky-500/60 font-poppins ${
-                                activeSection === item.id ? 'text-sky-500' : 'text-gray-400'
-                            }`}
+                            className={`text-sm font-medium transition-all duration-300 hover:text-sky-500/60 font-poppins ${activeSection === item.id ? 'text-sky-500' : 'text-gray-400'
+                                }`}
                         >
                             {item.label}
                         </button>
@@ -57,7 +56,7 @@ const Navigation = ({ activeSection, scrollToSection, scrolled }) => {
                     <motion.a
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        href="/assets/resume.pdf"
+                        href="/assets/TayyabaAnwarAly_Resume.pdf"
                         target="_blank"
                         className="px-5 py-2 rounded-xl bg-sky-500/20 text-sky-500 text-sm font-semibold border border-sky-500/30 hover:bg-sky-500/30 transition-all flex items-center gap-2"
                     >
@@ -94,9 +93,8 @@ const Navigation = ({ activeSection, scrollToSection, scrolled }) => {
                                         scrollToSection(item.id);
                                         setIsOpen(false);
                                     }}
-                                    className={`text-lg font-medium text-left transition-colors font-poppins ${
-                                        activeSection === item.id ? 'text-sky-500' : 'text-gray-400'
-                                    }`}
+                                    className={`text-lg font-medium text-left transition-colors font-poppins ${activeSection === item.id ? 'text-sky-500' : 'text-gray-400'
+                                        }`}
                                 >
                                     {item.label}
                                 </button>
