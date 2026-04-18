@@ -89,7 +89,7 @@ const HeroSection = ({ scrollToSection }) => {
                         </motion.a>
                         <motion.a
                             whileHover={{ y: -5, color: '#0ea5e9' }}
-                            href="https://www.linkedin.com/in/tayyaba-anwar-aly"
+                            href="https://www.linkedin.com/in/tayyaba-anwaraly/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-gray-500 transition-colors"

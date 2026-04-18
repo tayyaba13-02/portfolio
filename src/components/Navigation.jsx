@@ -102,7 +102,7 @@ const Navigation = ({ activeSection, scrollToSection, scrolled }) => {
                                 </button>
                             ))}
                             <a
-                                href="/assets/resume.pdf"
+                                href="/assets/TayyabaAnwarAly_Resume.pdf"
                                 className="text-lg font-medium text-sky-500 font-poppins flex items-center gap-2"
                             >
                                 <FileText size={20} />

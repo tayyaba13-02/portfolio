@@ -47,14 +47,14 @@ const ContactSection = () => {
         },
         {
             title: "LinkedIn",
-            value: "linkedin.com/in/tayyaba-anwar-aly",
-            href: "https://www.linkedin.com/in/tayyaba-anwar-aly",
+            value: "linkedin.com/in/tayyaba-anwaraly",
+            href: "https://www.linkedin.com/in/tayyaba-anwaraly/",
             icon: Linkedin
         },
         {
             title: "Resume",
             value: "Download PDF",
-            href: "/assets/resume.pdf",
+            href: "/assets/TayyabaAnwarAly_Resume.pdf",
             icon: FileText
         }
     ];
