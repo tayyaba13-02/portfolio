@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Github, Linkedin, Briefcase, FileText } from 'lucide-react';
-import profileImg from '../assets/profile.jpeg';
+import profileImg from '../assets/profile.png';
 
 /**
  * HeroSection Component
@@ -114,7 +114,7 @@ const HeroSection = ({ scrollToSection }) => {
                     <div className="relative group">
                         {/* Image Frame */}
                         <div className="absolute -inset-1 bg-gradient-to-r from-sky-500/40 to-teal-500/40 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-                        
+
                         <img
                             src={profileImg}
                             alt="Tayyaba Anwar"
