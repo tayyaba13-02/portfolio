@@ -56,7 +56,7 @@ const Navigation = ({ activeSection, scrollToSection, scrolled }) => {
                     <motion.a
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        href="/assets/TayyabaAnwarAly_Resume.pdf"
+                        href="/assets/TayyabaAly.pdf"
                         target="_blank"
                         className="px-5 py-2 rounded-xl bg-sky-500/20 text-sky-500 text-sm font-semibold border border-sky-500/30 hover:bg-sky-500/30 transition-all flex items-center gap-2"
                     >
