@@ -64,18 +64,9 @@ const EducationSection = () => {
         {
             degree: "Bachelor of Science in Information Technology",
             institution: "Punjab University (PUCIT)",
-            duration: "2022 - Present",
-            grade: "CGPA: 3.47 / 4.0",
-            status: "8th Semester",
+            duration: "Dec 2022 - May 2026",
+            grade: "CGPA: 3.49 / 4.0",
             icon: <GraduationCap size={28} className="text-sky-500" />
-        },
-        {
-            degree: "FSC (Pre-Engineering)",
-            institution: "Punjab Group of Colleges",
-            duration: "2020 - 2022",
-            grade: "Marks: 1038 / 1100",
-            status: null,
-            icon: <BookOpen size={28} className="text-sky-500" />
         }
     ];
 

@@ -93,12 +93,12 @@ const ProjectsSection = () => {
         {
             title: "EduVerse AI (Capstone FYP)",
             description: "An AI-powered multi-tenant e-learning platform allowing independent institutional operations with personalized adaptive learning assistants.",
-            tech: ["Angular", "FastAPI", "MongoDB", "LangChain", "LLMs", "AWS"],
+            tech: ["Angular", "FastAPI", "MongoDB", "LangChain", "ChromaDB", "AWS"],
             features: [
-                "Multi-Tenancy: Secure data isolation for multiple institutions.",
-                "AI Learning Assistant: Smart content summarization and Q&A.",
-                "Course Management: Comprehensive tools for material organization.",
-                "Scalable Architecture: Cloud-native design hosted on AWS."
+                "Built end-to-end RAG pipeline: document ingestion (PDF/PPTX/DOCX), recursive chunking, all-MiniLM-L6-v2 embeddings, and semantic retrieval via ChromaDB",
+                "Integrated Ollama LLMs (phi3.5, qwen2.5:3b, llama3.2:3b) with task-specific routing for lesson generation, MCQ creation, and conversational AI tutoring",
+                "Hallucination detection via BERTScore + ROUGE; adaptive classifier generates content at Slow / Average / Fast pace levels",
+                "Multi-tenant SaaS on AWS with secure tenant isolation, independent branding, and duplicate-generation prevention"
             ],
             links: {
                 github: "https://github.com/Muhammad-Hassan-522/EduVerse-AI-backend.git",
@@ -108,7 +108,7 @@ const ProjectsSection = () => {
         {
             title: "Nexus Music",
             description: "A premium music streaming application with a sleek Emerald Design System and privacy-first anonymous identity.",
-            tech: ["FastAPI", "React", "MongoDB", "Framer Motion", "Tailwind CSS", "Zustand"],
+            tech: ["FastAPI", "React", "PostgreSQL", "Framer Motion", "Tailwind CSS", "Zustand"],
             features: [
                 "Emerald UI/UX: High-contrast dark theme with glassmorphism.",
                 "Anonymous Identity: Privacy-first browser-based Identity Key.",

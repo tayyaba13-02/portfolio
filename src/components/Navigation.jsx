@@ -90,8 +90,9 @@ const Navigation = ({ activeSection, scrollToSection, scrolled }) => {
                                 <button
                                     key={item.id}
                                     onClick={() => {
-                                        scrollToSection(item.id);
                                         setIsOpen(false);
+                                        // Small timeout to allow menu animation to start closing before scroll
+                                        setTimeout(() => scrollToSection(item.id), 100);
                                     }}
                                     className={`text-lg font-medium text-left transition-colors font-poppins ${activeSection === item.id ? 'text-sky-500' : 'text-gray-400'
                                         }`}
@@ -100,7 +101,7 @@ const Navigation = ({ activeSection, scrollToSection, scrolled }) => {
                                 </button>
                             ))}
                             <a
-                                href="/assets/TayyabaAnwarAly_Resume.pdf"
+                                href="/assets/Tayyaba_Anwar_FullStack_Resume.pdf"
                                 className="text-lg font-medium text-sky-500 font-poppins flex items-center gap-2"
                             >
                                 <FileText size={20} />

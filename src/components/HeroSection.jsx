@@ -38,7 +38,7 @@ const HeroSection = ({ scrollToSection }) => {
                             className="h-0.5 bg-sky-400/80"
                         />
                         <p className="text-sky-400/80 tracking-[0.2em] text-xs sm:text-sm font-medium uppercase font-poppins">
-                            Full Stack Developer
+                            Software Engineer | Full Stack Developer
                         </p>
                     </div>
 
@@ -50,7 +50,7 @@ const HeroSection = ({ scrollToSection }) => {
 
                     {/* Description */}
                     <p className="text-gray-400 max-w-xl mx-auto lg:mx-0 text-base sm:text-lg leading-relaxed mb-10 font-poppins">
-                        Dedicated to crafting sophisticated digital ecosystems that prioritize <span className="text-sky-400/80 font-semibold underline decoration-sky-500/20 underline-offset-4">technical precision</span> and user-centric design. With <span className="text-sky-400/80 font-semibold">1.5 years</span> of hands-on development, I transform complex ideas into seamless, high-performance web applications.
+                        Dedicated to architecting <span className="text-sky-400/80 font-semibold underline decoration-sky-500/20 underline-offset-4">scalable software systems</span> and sophisticated digital ecosystems. With a strong focus on technical precision and performance, I transform complex requirements into seamless, end-to-end applications.
                     </p>
 
                     {/* CTA Buttons */}
@@ -65,15 +65,15 @@ const HeroSection = ({ scrollToSection }) => {
                             View Projects
                         </motion.button>
 
-                        <motion.a
+                        <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            href="mailto:tayyabaanwar43@gmail.com"
+                            onClick={() => scrollToSection('contact')}
                             className="px-8 py-4 border border-sky-500/40 text-sky-500/60 hover:bg-sky-500/10 rounded-xl transition-all text-center font-semibold flex items-center justify-center gap-2"
                         >
                             <Mail size={20} />
                             Contact Me
-                        </motion.a>
+                        </motion.button>
                     </div>
 
                     {/* Social Links */}

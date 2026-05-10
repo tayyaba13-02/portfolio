@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Github, Linkedin, FileText, Send } from 'lucide-react';
 
@@ -32,6 +32,35 @@ const ContactCard = ({ title, value, href, icon: Icon, delay }) => (
  * Professional contact area with narrative call-to-action and social grids.
  */
 const ContactSection = () => {
+    const [status, setStatus] = useState("");
+    
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus("Sending...");
+        
+        const formData = new FormData(e.target);
+        
+        try {
+            const response = await fetch("https://formspree.io/f/mbdwpevr", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                setStatus("Message sent successfully!");
+                e.target.reset();
+                setTimeout(() => setStatus(""), 3000);
+            } else {
+                setStatus("Error sending message.");
+            }
+        } catch (error) {
+            setStatus("Error sending message.");
+        }
+    };
+
     const contactLinks = [
         {
             title: "Email",
@@ -53,8 +82,8 @@ const ContactSection = () => {
         },
         {
             title: "Resume",
-            value: "Download PDF",
-            href: "/assets/TayyabaAnwarAly_Resume.pdf",
+            value: "View Full Resume",
+            href: "/assets/TayyabaAly.pdf",
             icon: FileText
         }
     ];
@@ -112,8 +141,8 @@ const ContactSection = () => {
                         Get In Touch
                     </h2>
                     <p className="text-gray-300 leading-relaxed max-w-2xl font-poppins">
-                        I’m open to <span className="text-white font-semibold italic">software engineering roles</span>, 
-                        <span className="text-white font-semibold italic ml-1">full-stack development</span>, and 
+                        I’m open to <span className="text-white font-semibold italic">software engineering roles</span>,
+                        <span className="text-white font-semibold italic ml-1">full-stack development</span>, and
                         <span className="text-white font-semibold italic ml-1">AI-integrated projects</span>. Let's build something extraordinary together.
                     </p>
                 </motion.div>
@@ -127,6 +156,61 @@ const ContactSection = () => {
                         />
                     ))}
                 </div>
+
+                {/* 3. CONTACT FORM */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                    className="glass rounded-3xl p-8 md:p-12 border border-white/5"
+                >
+                    <form 
+                        onSubmit={handleSubmit}
+                        className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                    >
+                        <div className="space-y-2">
+                            <label className="text-gray-400 text-sm font-poppins ml-2">Your Name</label>
+                            <input
+                                required
+                                name="name"
+                                type="text"
+                                placeholder="Tayyaba Anwar"
+                                className="w-full px-6 py-4 rounded-xl bg-zinc-900 border border-white/10 text-white focus:border-sky-500/50 transition-all outline-none"
+                            />
+                        </div>
+                        <div className="space-y-2">
+                            <label className="text-gray-400 text-sm font-poppins ml-2">Email Address</label>
+                            <input
+                                required
+                                name="email"
+                                type="email"
+                                placeholder="tayyaba@example.com"
+                                className="w-full px-6 py-4 rounded-xl bg-zinc-900 border border-white/10 text-white focus:border-sky-500/50 transition-all outline-none"
+                            />
+                        </div>
+                        <div className="md:col-span-2 space-y-2">
+                            <label className="text-gray-400 text-sm font-poppins ml-2">Message</label>
+                            <textarea
+                                required
+                                name="message"
+                                rows="5"
+                                placeholder="How can I help you?"
+                                className="w-full px-6 py-4 rounded-xl bg-zinc-900 border border-white/10 text-white focus:border-sky-500/50 transition-all outline-none resize-none"
+                            ></textarea>
+                        </div>
+                        <div className="md:col-span-2">
+                            <button
+                                type="submit"
+                                disabled={status === "Sending..."}
+                                className="w-full md:w-auto px-10 py-4 bg-sky-500/40 hover:bg-sky-500/60 text-white rounded-xl transition-all font-bold flex items-center justify-center gap-3 border border-sky-500/30 disabled:opacity-50"
+                            >
+                                <Send size={20} />
+                                {status || "Send Message"}
+                            </button>
+                        </div>
+                    </form>
+                </motion.div>
 
             </div>
         </section>

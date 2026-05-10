@@ -24,9 +24,11 @@ const SkillCard = ({ label, delay }) => (
  * Combines narrative experience with technical expertise grids.
  */
 const ExperienceSection = () => {
-    const frontendSkills = ["HTML5", "CSS3", "JavaScript", "TypeScript", "React", "Angular", "Tailwind CSS", "Bootstrap"];
-    const backendSkills = ["Python", "FastAPI", "Java", "ASP.NET", "C#", "REST APIs", "Auth & Security"];
-    const databaseTools = ["SQL Server", "MongoDB", "MySQL", "Git", "GitHub", "AWS"];
+    const frontendSkills = ["React", "Angular", "TypeScript", "JavaScript (ES6+)", "Tailwind CSS", "Bootstrap", "HTML5", "CSS3"];
+    const backendSkills = ["FastAPI", "ASP.NET Core", "Python", "C#", "Java", "C++", "REST APIs"];
+    const databaseTools = ["PostgreSQL", "MySQL", "SQL Server", "MongoDB", "ChromaDB"];
+    const techTools = ["Git", "GitHub", "AWS", "Docker"];
+    const aiTools = ["Cursor", "Claude", "Codex", "Ollama", "LangChain", "OpenCV"];
 
     return (
         <section id="experience" className="min-h-screen bg-black px-6 sm:px-10 lg:px-20 py-24 relative overflow-hidden">
@@ -64,15 +66,15 @@ const ExperienceSection = () => {
                             </div>
                             <h4 className="text-sky-500 font-bold uppercase tracking-widest text-xs mb-2">Latest Experience</h4>
                             <h3 className="text-2xl font-bold text-white mb-1">Full Stack Developer Intern</h3>
-                            <p className="text-gray-400 mb-4 font-medium italic">ARCH TECHNOLOGIES | Dec 2025 - Jan 2026</p>
+                            <p className="text-gray-400 mb-4 font-medium italic">ARCH TECHNOLOGIES | Dec 2025 - Jan 2025</p>
                             <ul className="space-y-3 text-sm text-gray-400">
                                 <li className="flex items-start gap-2">
                                     <div className="w-1.5 h-1.5 rounded-full bg-sky-500 mt-1.5 shrink-0" />
-                                    Architected responsive UIs ensuring seamless performance across all device types.
+                                    Successfully developed and delivered complex full-stack features for multiple projects while strictly adhering to rigorous production deadlines.
                                 </li>
                                 <li className="flex items-start gap-2">
                                     <div className="w-1.5 h-1.5 rounded-full bg-sky-500 mt-1.5 shrink-0" />
-                                    Leveraged full-stack technical skills to deliver high-quality software solutions.
+                                    Leveraged end-to-end technical expertise to architect scalable software solutions and ensure seamless cross-platform performance.
                                 </li>
                             </ul>
                         </motion.div>
@@ -99,7 +101,7 @@ const ExperienceSection = () => {
                     </div>
                 </div>
 
-                {/* 3. BACKEND & TOOLS */}
+                {/* 3. BACKEND EXPERTISE */}
                 <div className="space-y-10">
                     <motion.h3
                         initial={{ opacity: 0, x: -20 }}
@@ -109,11 +111,51 @@ const ExperienceSection = () => {
                         className="text-2xl sm:text-3xl font-semibold text-white flex items-center gap-4 font-poppins"
                     >
                         <span className="w-8 h-0.5 bg-sky-500/40 shrink-0"></span>
-                        Backend & Database Tools
+                        Backend Expertise
                     </motion.h3>
 
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
-                        {backendSkills.concat(databaseTools).map((skill, index) => (
+                        {backendSkills.map((skill, index) => (
+                            <SkillCard key={index} label={skill} delay={index * 0.05} />
+                        ))}
+                    </div>
+                </div>
+
+                {/* 4. DATABASE TOOLS */}
+                <div className="space-y-10">
+                    <motion.h3
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                        className="text-2xl sm:text-3xl font-semibold text-white flex items-center gap-4 font-poppins"
+                    >
+                        <span className="w-8 h-0.5 bg-sky-500/40 shrink-0"></span>
+                        Databases & Vector Stores
+                    </motion.h3>
+
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
+                        {databaseTools.map((skill, index) => (
+                            <SkillCard key={index} label={skill} delay={index * 0.05} />
+                        ))}
+                    </div>
+                </div>
+
+                {/* 5. DEVELOPMENT TOOLS & AI */}
+                <div className="space-y-10">
+                    <motion.h3
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                        className="text-2xl sm:text-3xl font-semibold text-white flex items-center gap-4 font-poppins"
+                    >
+                        <span className="w-8 h-0.5 bg-sky-500/40 shrink-0"></span>
+                        Modern Workflow & AI Tools
+                    </motion.h3>
+
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
+                        {techTools.concat(aiTools).map((skill, index) => (
                             <SkillCard key={index} label={skill} delay={index * 0.05} />
                         ))}
                     </div>
